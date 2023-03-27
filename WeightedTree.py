@@ -38,7 +38,7 @@ class WeightedTree(WeightedGraph):
         return WeightedTree(vertices, edges)
 
 ###########################  START YOUR CODE HERE  ####################################
-
+ 
 
     @classmethod
     def MSTfromGraph(cls, graph):
@@ -52,17 +52,17 @@ class WeightedTree(WeightedGraph):
             """
         
         sortedEdge = WeightedTree.sortEdges(graph) # Sort all edges in increasing order of their edge weights.
-        Giventree = WeightedTree(graph.totalVertices()) #graph whose MST will be computed
+        initialTree = WeightedTree(graph.totalVertices()) #graph whose MST will be computed
 
         i = 0 
-        while i < len(sortedEdge) and not Giventree.isTree(): # loop through to see if an edge can be added to the tree and is not a tree
+        while i < len(sortedEdge) and not initialTree.isTree(): # loop through to see if an edge can be added to the tree and is not a tree
             edge = sortedEdge[i] # trying to pick the smallest edge
-            if Giventree.canAdd(edge): #Check if the new edge creates a cycle or loop in a spanning tree.
-                Giventree.addEdge(edge)
+            if initialTree.canAdd(edge): #Check if the new edge creates a cycle or loop in a spanning tree.
+                initialTree.addEdge(edge)
             i += 1
 
-        if Giventree.isTree(): # when it is a tree return the MSTtree 
-            return Giventree
+        if initialTree.isTree(): # when it is a tree return the MSTtree 
+            return initialTree
             
         return #otherwise return  none
 
